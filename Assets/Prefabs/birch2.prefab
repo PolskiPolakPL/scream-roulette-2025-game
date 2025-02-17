@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6231970234172582234}
+  - component: {fileID: 2715246379374023014}
   m_Layer: 0
   m_Name: birch2
   m_TagString: Untagged
@@ -32,6 +33,36 @@ Transform:
   - {fileID: 5561885282475906899}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &2715246379374023014
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7381198545725816099}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.22520463
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2919620150564788226}
+    - renderer: {fileID: 2524349505184428013}
+  - screenRelativeHeight: 0.019532792
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2919620150564788226}
+    - renderer: {fileID: 2524349505184428013}
+  - screenRelativeHeight: 0.00057086546
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2919620150564788226}
+    - renderer: {fileID: 2524349505184428013}
+  m_Enabled: 1
 --- !u!1001 &5378828815672701112
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89,6 +120,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81c0713614c58f1409e0b67ea8f1e338, type: 3}
+--- !u!23 &2524349505184428013 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1608564829679968427, guid: 81c0713614c58f1409e0b67ea8f1e338, type: 3}
+  m_PrefabInstance: {fileID: 5378828815672701112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2919620150564788226 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7071182760956848314, guid: 81c0713614c58f1409e0b67ea8f1e338, type: 3}
+  m_PrefabInstance: {fileID: 5378828815672701112}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5561885282475906899 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 81c0713614c58f1409e0b67ea8f1e338, type: 3}
