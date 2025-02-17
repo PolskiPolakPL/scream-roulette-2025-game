@@ -2,9 +2,9 @@ using System;
 using UnityEngine;
 
 
-interface Interaction
+interface IInteractable
 {
-    public void DoInteraction(Transform itemT);
+    public void Interact();
 }
 
 
