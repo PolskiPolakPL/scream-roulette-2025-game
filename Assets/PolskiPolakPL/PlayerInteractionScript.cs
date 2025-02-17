@@ -1,10 +1,17 @@
 using System;
 using UnityEngine;
 
+
+interface Interaction
+{
+    public void DoInteraction(Transform itemT);
+}
+
+
 public class PlayerInteractionScript : MonoBehaviour
 {
     [SerializeField] Transform cameraT;
-    [SerializeField] float playerReach = 1;
+    [SerializeField] float playerReach = 1.7f;
     [SerializeField] LayerMask interactionLayer;
     public event Action<Transform> OnPlayerInteraction;
     RaycastHit hit;
@@ -14,9 +21,7 @@ public class PlayerInteractionScript : MonoBehaviour
     private void Start()
     {
         if (!cameraT)
-        {
-            cameraT = transform.GetChild(0);
-        }
+            cameraT = Camera.main.transform;
     }
 
     // Update is called once per frame
@@ -39,3 +44,4 @@ public class PlayerInteractionScript : MonoBehaviour
         }
     }
 }
+
