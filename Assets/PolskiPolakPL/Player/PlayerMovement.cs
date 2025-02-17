@@ -4,12 +4,13 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("PlayerScript Movement")]
-    [SerializeField] float playerSpeed = 5f;
-    
+    [SerializeField] float playerSpeed = 3.5f;
+
     [Header("PlayerScript Jump")]
+    public bool CanJump = true;
     [SerializeField] float jumpHeight = 1.0f;
-    [SerializeField] private float gravityValue = Physics.gravity.y;
-    [SerializeField] Vector3 playerVelocity;
+    private float gravityValue = Physics.gravity.y;
+    private Vector3 playerVelocity;
     private bool groundedPlayer;
     
     [Header("PlayerScript Look")]
@@ -37,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
         PlayerMove();
         PlayerLook();
-        if (Input.GetButtonDown("Jump") && groundedPlayer)
+        if (Input.GetButtonDown("Jump") && groundedPlayer && CanJump)
             PlayerJump();
 
         playerVelocity.y += gravityValue * Time.deltaTime;
