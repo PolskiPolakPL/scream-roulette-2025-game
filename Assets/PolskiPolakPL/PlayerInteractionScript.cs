@@ -31,28 +31,24 @@ public class PlayerInteractionScript : MonoBehaviour
     {
         ray = new Ray(cameraT.position, cameraT.forward);
         Debug.DrawRay(cameraT.position, cameraT.forward * playerReach,Color.blue);
-        if (Physics.Raycast(ray, out hit, playerReach))
+        if (!Physics.Raycast(ray, out hit, playerReach))
         {
-            if(hit.collider.tag == "Interactable")
-            {
-                Interactable newInteractable = hit.collider.GetComponent<Interactable>();
-                if(currentInteractable && newInteractable!= currentInteractable)
-                {
-                    DisableCurrentInteractable();
-                }
-                if (newInteractable.enabled)
-                {
-                    SetNewCurrentInteractable(newInteractable);
-                }
-                else
-                {
-                    DisableCurrentInteractable();
-                }
-            }
-            else
-            {
-                DisableCurrentInteractable();
-            }
+            DisableCurrentInteractable();
+            return;
+        }
+        if(!(hit.collider.tag == "Interactable"))
+        {
+            DisableCurrentInteractable();
+            return;
+        }
+        Interactable newInteractable = hit.collider.GetComponent<Interactable>();
+        if(currentInteractable && newInteractable!= currentInteractable)
+        {
+            DisableCurrentInteractable();
+        }
+        if (newInteractable.enabled)
+        {
+            SetNewCurrentInteractable(newInteractable);
         }
         else
         {
