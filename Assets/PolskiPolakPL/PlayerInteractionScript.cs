@@ -58,14 +58,18 @@ public class PlayerInteractionScript : MonoBehaviour
     {
         currentInteractable = newInteractable;
         currentInteractable.EnableOutline();
-    }
+        if (HUDManager.Instance)
+            HUDManager.Instance.EnableInteractionText(currentInteractable.message);
 
+    }
     void DisableCurrentInteractable()
     {
         if (!currentInteractable)
             return;
         currentInteractable.DisableOutline();
         currentInteractable = null;
+        if (HUDManager.Instance)
+            HUDManager.Instance.DisableInteractionText();
     }
 }
 
