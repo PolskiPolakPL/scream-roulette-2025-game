@@ -6,7 +6,9 @@ public class PlayerInteractionScript : MonoBehaviour
 {
     [SerializeField] Transform cameraT;
     [SerializeField] float playerReach = 2;
+
     Interactable currentInteractable;
+    Interactable newInteractable;
     RaycastHit hit;
     Ray ray;
     public Transform interactiontHitT {  get; private set; }
@@ -31,18 +33,13 @@ public class PlayerInteractionScript : MonoBehaviour
     {
         ray = new Ray(cameraT.position, cameraT.forward);
         Debug.DrawRay(cameraT.position, cameraT.forward * playerReach,Color.blue);
-        if (!Physics.Raycast(ray, out hit, playerReach))
+        if (!Physics.Raycast(ray, out hit, playerReach) || !(hit.collider.tag == "Interactable"))
         {
             DisableCurrentInteractable();
             return;
         }
-        if(!(hit.collider.tag == "Interactable"))
-        {
-            DisableCurrentInteractable();
-            return;
-        }
-        Interactable newInteractable = hit.collider.GetComponent<Interactable>();
-        if(currentInteractable && newInteractable!= currentInteractable)
+        newInteractable = hit.collider.GetComponent<Interactable>();
+        if(currentInteractable && newInteractable != currentInteractable)
         {
             DisableCurrentInteractable();
         }
