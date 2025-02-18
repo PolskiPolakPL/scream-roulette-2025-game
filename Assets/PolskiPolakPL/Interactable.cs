@@ -1,22 +1,35 @@
+using System;
 using UnityEngine;
 
-public class Interactable : MonoBehaviour, IInteractable
+[RequireComponent(typeof(Outline))]
+public class Interactable : MonoBehaviour
 {
+
+    public event Action OnInteraction;
+
+    Outline outline;
+    public string message;
+
 
     public void Interact()
     {
-        
+        OnInteraction?.Invoke();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        outline = GetComponent<Outline>();
+        DisableOutline();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DisableOutline()
     {
-        
+        outline.enabled = false;
+    }
+
+    public void EnableOutline()
+    {
+        outline.enabled = true;
     }
 }

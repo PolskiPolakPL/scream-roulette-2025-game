@@ -2,18 +2,11 @@ using System;
 using UnityEngine;
 
 
-interface IInteractable
-{
-    public void Interact();
-}
-
-
 public class PlayerInteractionScript : MonoBehaviour
 {
     [SerializeField] Transform cameraT;
-    [SerializeField] float playerReach = 1.7f;
-    [SerializeField] LayerMask interactionLayer;
-    public event Action<Transform> OnPlayerInteraction;
+    [SerializeField] float playerReach = 2;
+    Interactable currentInteractable;
     RaycastHit hit;
     Ray ray;
     public Transform interactiontHitT {  get; private set; }
@@ -27,21 +20,59 @@ public class PlayerInteractionScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckInteraction();
+        if (Input.GetKeyDown(KeyCode.F) && currentInteractable)
+        {
+            currentInteractable.Interact();
+        }
+    }
+
+    void CheckInteraction()
+    {
         ray = new Ray(cameraT.position, cameraT.forward);
         Debug.DrawRay(cameraT.position, cameraT.forward * playerReach,Color.blue);
-        if (!Physics.Raycast(ray, out hit, playerReach, interactionLayer))
+        if (Physics.Raycast(ray, out hit, playerReach))
         {
-            interactiontHitT = null;
+            if(hit.collider.tag == "Interactable")
+            {
+                Interactable newInteractable = hit.collider.GetComponent<Interactable>();
+                if(currentInteractable && newInteractable!= currentInteractable)
+                {
+                    DisableCurrentInteractable();
+                }
+                if (newInteractable.enabled)
+                {
+                    SetNewCurrentInteractable(newInteractable);
+                }
+                else
+                {
+                    DisableCurrentInteractable();
+                }
+            }
+            else
+            {
+                DisableCurrentInteractable();
+            }
+        }
+        else
+        {
+            DisableCurrentInteractable();
+        }
+
+    }
+
+    void SetNewCurrentInteractable(Interactable newInteractable)
+    {
+        currentInteractable = newInteractable;
+        currentInteractable.EnableOutline();
+    }
+
+    void DisableCurrentInteractable()
+    {
+        if (!currentInteractable)
             return;
-        }
-        interactiontHitT = hit.transform;
-        Debug.DrawRay(cameraT.position, cameraT.forward * playerReach, Color.green);
-        if (Input.GetMouseButtonDown(0))
-        {
-            Debug.DrawRay(cameraT.position, cameraT.forward * playerReach, Color.red,0.1f);
-            OnPlayerInteraction?.Invoke(hit.transform);
-            Debug.Log($"Interacted with {hit.collider.name}");
-        }
+        currentInteractable.DisableOutline();
+        currentInteractable = null;
     }
 }
 
