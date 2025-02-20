@@ -3923,7 +3923,7 @@ GameObject:
   - component: {fileID: 672068344}
   - component: {fileID: 672068346}
   - component: {fileID: 672068345}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -4107,7 +4107,7 @@ GameObject:
   - component: {fileID: 683859391}
   - component: {fileID: 683859393}
   - component: {fileID: 683859392}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlayerModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5148,7 +5148,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 861071253}
-  - component: {fileID: 861071254}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -5171,18 +5170,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 958295502}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &861071254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 861071252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67ea62cebfed1074099fde3ea923eb48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &871307254 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c8ef4d274d2a8b348a184789c56106ba, type: 3}
@@ -8720,7 +8707,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2006972390}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1453494847
@@ -10837,7 +10825,7 @@ GameObject:
   - component: {fileID: 1772525852}
   - component: {fileID: 1772525849}
   - component: {fileID: 1772525850}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12646,6 +12634,37 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 135249002}
   m_SourcePrefab: {fileID: 100100000, guid: 969357f089673fc42b43f1275666dc58, type: 3}
+--- !u!1 &2006972389
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2006972390}
+  m_Layer: 0
+  m_Name: Sanity System
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2006972390
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006972389}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1447949734}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2049271129
 GameObject:
   m_ObjectHideFlags: 0
