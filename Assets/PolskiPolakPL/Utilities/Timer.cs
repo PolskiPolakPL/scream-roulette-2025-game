@@ -1,5 +1,5 @@
 using System; 
-namespace PolskiPolakPL.Utils.Timer
+namespace PolskiPolakPL.Utils
 {
     /// <summary>
     /// Timer class from tutorial extended by PolskiPolakPL. Tutorial link: 
