@@ -1,0 +1,75 @@
+using System;
+using UnityEngine;
+
+
+public class PlayerInteractionScript : MonoBehaviour
+{
+    [SerializeField] Transform cameraT;
+    [SerializeField] float playerReach = 2;
+
+    Interactable currentInteractable;
+    Interactable newInteractable;
+    RaycastHit hit;
+    Ray ray;
+    public Transform interactiontHitT {  get; private set; }
+
+    private void Start()
+    {
+        if (!cameraT)
+            cameraT = Camera.main.transform;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        CheckInteraction();
+        if (Input.GetKeyDown(KeyCode.F) && currentInteractable)
+        {
+            currentInteractable.Interact();
+        }
+    }
+
+    void CheckInteraction()
+    {
+        ray = new Ray(cameraT.position, cameraT.forward);
+        Debug.DrawRay(cameraT.position, cameraT.forward * playerReach,Color.blue);
+        if (!Physics.Raycast(ray, out hit, playerReach) || !(hit.collider.tag == "Interactable"))
+        {
+            DisableCurrentInteractable();
+            return;
+        }
+        newInteractable = hit.collider.GetComponent<Interactable>();
+        if(currentInteractable && newInteractable != currentInteractable)
+        {
+            DisableCurrentInteractable();
+        }
+        if (newInteractable.enabled)
+        {
+            SetNewCurrentInteractable(newInteractable);
+        }
+        else
+        {
+            DisableCurrentInteractable();
+        }
+
+    }
+
+    void SetNewCurrentInteractable(Interactable newInteractable)
+    {
+        currentInteractable = newInteractable;
+        currentInteractable.EnableOutline();
+        if (HUDManager.Instance)
+            HUDManager.Instance.EnableInteractionText(currentInteractable.message);
+
+    }
+    void DisableCurrentInteractable()
+    {
+        if (!currentInteractable)
+            return;
+        currentInteractable.DisableOutline();
+        currentInteractable = null;
+        if (HUDManager.Instance)
+            HUDManager.Instance.DisableInteractionText();
+    }
+}
+
