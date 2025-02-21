@@ -28,7 +28,7 @@ public class ToiletScript : MonoBehaviour
             timer.Tick(Time.deltaTime);
     }
 
-    void FlushToilet()
+    public void FlushToilet()
     {
         if (isFlushed)
             return;

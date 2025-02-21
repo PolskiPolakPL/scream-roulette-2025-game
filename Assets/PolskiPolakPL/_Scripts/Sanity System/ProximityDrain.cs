@@ -9,7 +9,6 @@ public class ProximityDrain : MonoBehaviour
     [SerializeField] float drainDelay;
 
     bool isTargetInRange;
-    int ignoreLayers;
 
     PlayerScript player;
     Timer timer;
@@ -46,7 +45,7 @@ public class ProximityDrain : MonoBehaviour
         timer.OnTimerEnd -= DrainSanity;
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, drainDistance);
