@@ -15,6 +15,7 @@ public static class SanitySystem
     {
         int newSanity = Mathf.Max(currentValue-amount, 0);
         CheckSanity(newSanity);
+        Debug.Log($"Lost {amount} sanity points");
         return newSanity;
     }
 

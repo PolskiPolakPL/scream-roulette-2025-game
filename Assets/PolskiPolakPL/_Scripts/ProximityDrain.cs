@@ -1,12 +1,15 @@
 using UnityEngine;
 using PolskiPolakPL.Utils;
 
-public class GhostScript : MonoBehaviour
+public class ProximityDrain : MonoBehaviour
 {
     [SerializeField] GameObject target;
     [SerializeField] float drainDistance;
     [SerializeField] int sanityDrain;
     [SerializeField] float drainDelay;
+
+    bool isTargetInRange;
+    int ignoreLayers;
 
     PlayerScript player;
     Timer timer;
@@ -21,8 +24,8 @@ public class GhostScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector3.Distance(target.transform.position, transform.position);
-        if (distance <= drainDistance)
+        isTargetInRange = Vector3.Distance(transform.position,target.transform.position) <= drainDistance;
+        if (isTargetInRange && !CheckTargetOccluded(transform.position,target.transform.position))
         {
             timer.Tick(Time.deltaTime);
         }
@@ -33,8 +36,19 @@ public class GhostScript : MonoBehaviour
         player.sanity = SanitySystem.LooseSanity(player.sanity,sanityDrain);
     }
 
+    bool CheckTargetOccluded(Vector3 originPosition, Vector3 targetPosition)
+    {
+        return Physics.Linecast(originPosition, targetPosition);
+    }
+
     private void OnDestroy()
     {
         timer.OnTimerEnd -= DrainSanity;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, drainDistance);
     }
 }

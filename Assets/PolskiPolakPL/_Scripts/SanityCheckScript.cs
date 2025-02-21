@@ -20,21 +20,21 @@ public class SanityCheckScript : MonoBehaviour
 
     void CallMad()
     {
-        Debug.Log("I'M GOING MAD!!!");
+        Debug.LogWarning("I'M GOING MAD!!!");
     }
 
     void CallInsane()
     {
-        Debug.Log("I'M INSANE!!!");
+        Debug.LogWarning("I'M INSANE!!!");
     }
 
     void CallParanoid()
     {
-        Debug.Log("Am I insane?");
+        Debug.LogWarning("Am I insane?");
     }
 
     void CallSane()
     {
-        Debug.Log("I'm Good :D");
+        Debug.LogWarning("I'm Good :D");
     }
 }
