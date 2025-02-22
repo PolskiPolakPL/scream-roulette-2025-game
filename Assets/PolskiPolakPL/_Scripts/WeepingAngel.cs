@@ -4,8 +4,8 @@ using UnityEngine.AI;
 
 public class WeepingAngel : MonoBehaviour
 {
-    Collider collider;
-    Camera camera;
+    Collider angelCollider;
+    Camera cam;
     Plane[] cameraFrustumPlanes;
 
     [SerializeField] GameObject angelModel;
@@ -16,8 +16,8 @@ public class WeepingAngel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        camera = Camera.main;
-        collider = angelModel.GetComponent<Collider>();
+        cam = Camera.main;
+        angelCollider = angelModel.GetComponent<Collider>();
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -46,8 +46,8 @@ public class WeepingAngel : MonoBehaviour
 
     bool IsAngelOnScreen()
     {
-        Bounds bounds = collider.bounds;
-        cameraFrustumPlanes = GeometryUtility.CalculateFrustumPlanes(camera);
+        Bounds bounds = angelCollider.bounds;
+        cameraFrustumPlanes = GeometryUtility.CalculateFrustumPlanes(cam);
         return GeometryUtility.TestPlanesAABB(cameraFrustumPlanes, bounds);
     }
 
