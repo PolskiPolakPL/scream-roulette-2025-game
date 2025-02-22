@@ -7,6 +7,7 @@ public class ProximityDrain : MonoBehaviour
     [SerializeField] float drainDistance;
     [SerializeField] int sanityDrain;
     [SerializeField] float drainDelay;
+    [SerializeField] float heightOffset=1;
 
     bool isTargetInRange;
 
@@ -37,7 +38,8 @@ public class ProximityDrain : MonoBehaviour
 
     bool CheckTargetOccluded(Vector3 originPosition, Vector3 targetPosition)
     {
-        return Physics.Linecast(originPosition, targetPosition);
+        Vector3 offset = new Vector3(0,heightOffset,0);
+        return Physics.Linecast(originPosition+offset, targetPosition+offset);
     }
 
     //private void OnDestroy()

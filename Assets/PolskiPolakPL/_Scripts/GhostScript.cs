@@ -27,7 +27,7 @@ public class GhostScript : MonoBehaviour
         BecomeInvisible();
         patrolMap.enabled = true;
         ghostInteract.enabled = false;
-        proximityDrain.enabled = false;
+        proximityDrain.enabled = true;
         weepingAngel.enabled = false;
     }
 

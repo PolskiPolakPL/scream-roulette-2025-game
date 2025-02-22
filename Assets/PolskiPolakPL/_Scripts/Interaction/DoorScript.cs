@@ -8,7 +8,7 @@ public class DoorScript : MonoBehaviour
 
     [SerializeField] Animator doorAnimator;
     [SerializeField] bool isDoorOpened = false;
-    Collider doorCollider;
+    [SerializeField] Collider doorCollider;
     public bool Locked = false;
     private void Start()
     {
@@ -31,12 +31,14 @@ public class DoorScript : MonoBehaviour
     {
         doorAnimator.Play("OpenDoorAnimation");
         isDoorOpened = true;
+        interactionSource.message = "Close";
     }
 
     void CloseDoor()
     {
         doorAnimator.Play("CloseDoorAnimation");
         isDoorOpened = false;
+        interactionSource.message = "Open";
     }
     void EnableCollider()
     {
