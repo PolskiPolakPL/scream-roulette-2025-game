@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu/Main Menu Scene.unity
     guid: 2619c59db5a996c4b8f0fd82842548c2
   - enabled: 1
+    path: Assets/Scenes/Temporary/terrain.unity
+    guid: 665b40d600a642a4a8696c2a4f480369
+  - enabled: 0
     path: Assets/PolskiPolakPL/Testing Scene.unity
     guid: fa7a61be0b607054baf9ca4c2ea3121b
   m_configObjects: {}

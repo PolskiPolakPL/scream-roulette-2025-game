@@ -24,11 +24,14 @@ public class ProximityDrain : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 offset = new Vector3(0, heightOffset, 0);
         isTargetInRange = Vector3.Distance(transform.position,target.transform.position) <= drainDistance;
-        if (isTargetInRange && !CheckTargetOccluded(transform.position,target.transform.position))
+        if (isTargetInRange /*&& !CheckTargetOccluded(transform.position,target.transform.position)*/)
         {
+            Debug.DrawLine(transform.position + offset, target.transform.position + offset, Color.red);
             timer.Tick(Time.deltaTime);
         }
+        Debug.DrawLine(transform.position+offset, target.transform.position + offset, Color.green);
     }
 
     void DrainSanity()
@@ -42,10 +45,10 @@ public class ProximityDrain : MonoBehaviour
         return Physics.Linecast(originPosition+offset, targetPosition+offset);
     }
 
-    //private void OnDestroy()
-    //{
-    //    timer.OnTimerEnd -= DrainSanity;
-    //}
+    private void OnDestroy()
+    {
+        timer.OnTimerEnd -= DrainSanity;
+    }
 
     private void OnDrawGizmosSelected()
     {

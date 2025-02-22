@@ -639,6 +639,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Apartment (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 922bbea4322a3c7469e7190417de3d96, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1215371896449706283, guid: 922bbea4322a3c7469e7190417de3d96, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

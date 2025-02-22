@@ -24,20 +24,13 @@ public class GhostScript : MonoBehaviour
 
     void StartFirstPhase()
     {
-        BecomeInvisible();
-        patrolMap.enabled = true;
-        ghostInteract.enabled = false;
         proximityDrain.enabled = true;
-        weepingAngel.enabled = false;
     }
 
     void StartSecondPhase()
     {
-        BecomeInvisible();
         patrolMap.enabled = true;
         ghostInteract.enabled = true;
-        proximityDrain.enabled = false;
-        weepingAngel.enabled = false;
     }
 
     void StartThirdPhase()

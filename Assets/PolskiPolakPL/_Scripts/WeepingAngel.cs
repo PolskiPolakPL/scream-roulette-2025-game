@@ -12,7 +12,9 @@ public class WeepingAngel : MonoBehaviour
     [SerializeField] Transform target;
     [SerializeField] LayerMask occluderLayer;
     [SerializeField] float OcclusionRayHeight = 1;
+    [SerializeField] AudioSource AudioSource;
     NavMeshAgent agent;
+    bool isAngelFrozen = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,13 +28,18 @@ public class WeepingAngel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if(IsAngelOnScreen() && !IsAngelOccluded())
         {
             FreezeAgent(true);
+            if(!isAngelFrozen)
+                AudioSource.Play();
+            isAngelFrozen=true;
         }
         else
         {
             FreezeAgent(false);
+            isAngelFrozen = false;
         }
         if (IsAngelOccluded())
         {
