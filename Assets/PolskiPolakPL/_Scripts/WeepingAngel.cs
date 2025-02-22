@@ -19,6 +19,8 @@ public class WeepingAngel : MonoBehaviour
         cam = Camera.main;
         angelCollider = angelModel.GetComponent<Collider>();
         agent = GetComponent<NavMeshAgent>();
+        agent.speed = 10;
+        agent.acceleration = 20;
     }
 
     // Update is called once per frame

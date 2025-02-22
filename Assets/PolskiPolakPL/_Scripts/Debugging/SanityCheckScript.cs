@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class SanityCheckScript : MonoBehaviour
 {
+
     private void Start()
     {
         SanitySystem.OnBecomeMad += CallMad;
@@ -37,4 +38,5 @@ public class SanityCheckScript : MonoBehaviour
     {
         Debug.LogWarning("I'm Good :D");
     }
+
 }

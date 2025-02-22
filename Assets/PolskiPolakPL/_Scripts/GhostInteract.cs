@@ -50,8 +50,8 @@ public class GhostInteract : MonoBehaviour
         currentInteractable = interactiveParent.GetChild(closestId).gameObject.GetComponent<Interactable>();
     }
 
-    private void OnDestroy()
-    {
-        timer.OnTimerEnd -= TryInteraction;
-    }
+    //private void OnDestroy()
+    //{
+    //    timer.OnTimerEnd -= TryInteraction;
+    //}
 }

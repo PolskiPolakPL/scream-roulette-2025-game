@@ -40,10 +40,10 @@ public class ProximityDrain : MonoBehaviour
         return Physics.Linecast(originPosition, targetPosition);
     }
 
-    private void OnDestroy()
-    {
-        timer.OnTimerEnd -= DrainSanity;
-    }
+    //private void OnDestroy()
+    //{
+    //    timer.OnTimerEnd -= DrainSanity;
+    //}
 
     private void OnDrawGizmosSelected()
     {
